@@ -1,0 +1,22 @@
+{% extends 'order/base.html' %}
+{% block body %}
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Price</td>
+            <td>Profit</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for business in businesses %}
+        <tr>
+            <td><a href="{% url 'get_orders' business.id %}">{{ business.name }}</a></td>
+            <td>{{ business.price }}</td>
+            <td>{{ business.profit }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+{% endblock %}

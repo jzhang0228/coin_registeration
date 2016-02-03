@@ -1,0 +1,24 @@
+{% extends 'order/base.html' %}
+{% block body %}
+<h3>{{ business.name }}</h3>
+<form method="POST" class="form-group user_order_form">
+    {% csrf_token %}
+    <div class="form-header">User Information</div>
+    <div class="user_form">
+        {{ user_form.non_field_errors }}
+        {{ user_form.as_p }}
+    </div>
+    <div class="form-header">Order Information <button id="add_order" class="btn btn-primary">+</button></div>
+    <div class="order_form">
+        {{ order_formset.management_form }}
+        {% for order_form in order_formset %}
+            <div class="one_order" id="origin_order_form">
+                {{ order_form.as_p }}
+                <button class="delete_order btn btn-default">-</button>
+            </div>
+        {% endfor %}
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Submit">
+</form>
+{% endblock %}
