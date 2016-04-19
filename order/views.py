@@ -79,7 +79,7 @@ class GetOrders(View):
 
 class UpdateOrders(View):
     def get_tracking_numbers(self, orders):
-        MAX_COUNT = 2
+        MAX_COUNT = 25
         count = 0
         tracking_numbers = []
         for order in orders:
